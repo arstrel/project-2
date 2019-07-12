@@ -1,0 +1,44 @@
+<h3>Edit report Page</h3>
+<a href="/profile">Back to Profile</a>
+
+<p>this should be per report ID</p>
+<p>Date: </p>
+<p>fields populateed with values from real check</p>
+
+
+<form action="/report/edit" method="POST">
+  <div>
+    <label for="position">Report for: </label>
+    <br>
+    <select name="position" id="positionSelect">
+      <option value="server">Server</option>
+      <option value="manager">Manager</option>
+    </select>
+    <br><br>
+  </div>
+
+  <label for="sales">Total Sales: </label>
+  <input type="number" name="sales" value="">
+
+  <label for="totalAutoGrat">Total Auto Gratuity: </label>
+  <input type="number" name="totalAutoGrat" value="">
+
+  <label for="tips">Total Tips: </label>
+  <input type="number" name="tips" value="">
+
+  <label for="tipoutBartender">Tip out to Bartender: </label>
+  <input type="number" name="tipoutBartender" value="">
+
+  <label for="tipoutFoodRunner">Tip out for Food Runner: </label>
+  <input type="number" name="tipoutFoodRunner" value="">
+
+  <label for="reportedTips">Reported Tips: </label>
+  <input type="number" name="reportedTips" value="">
+{{!-- 
+  if the report type is "manager" then change tipoutBartender and tipoutFoodRunner
+  for totalTipoutBartender and totalTipoutFoodRunner --}}
+
+
+  <button>Save changes</button>
+
+</form>

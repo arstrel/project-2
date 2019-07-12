@@ -1,0 +1,34 @@
+<h2>Edit profile</h2>
+<a href="/profile">Back to Profile</a>
+
+<p>This should be per profile ID</p>
+
+<form action="/profile/edit" method="POST">
+  <label for="name">Change Name to: </label>
+  <input type="text" name="name">
+
+  <label for="email">Change email to: </label>
+  <input type="text" name="email">
+
+  <label for="image">New picture for your profile</label>
+  <br><br>
+  <input type="file" name="image">
+  <br><br>
+  <div>
+  <label for="position">What is your position? </label>
+    <br>
+    
+    <select name="position" id="positionSelect">
+      <option value="server">Server</option>
+      <option value="manager">Manager</option>
+    </select>
+    <br><br>
+
+  </div>
+
+  <label for="password">Choose your password</label>
+  <input type="text" name="password">
+
+  <button>Save changes</button>
+
+</form>

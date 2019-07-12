@@ -1,0 +1,32 @@
+<h1>Sign in Page</h1>
+<a href="/">Back to Home Page</a>
+
+<form action="/signin" method="POST">
+  <label for="name">Your Name Please: </label>
+  <input type="text" name="name">
+
+  <label for="email">Enter your email</label>
+  <input type="text" name="email">
+
+  <label for="image">Upload picture for your profile</label>
+  <br><br>
+  <input type="file" name="image">
+  <br><br>
+  <div>
+  <label for="position">What is your position? </label>
+    <br>
+    
+    <select name="position" id="positionSelect">
+      <option value="server">Server</option>
+      <option value="manager">Manager</option>
+    </select>
+    <br><br>
+
+  </div>
+
+  <label for="password">Choose your password</label>
+  <input type="text" name="password">
+
+  <button>Create account</button>
+
+</form>

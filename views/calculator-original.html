@@ -1,0 +1,117 @@
+<div id="parameters" class="userInput">
+		<p><strong>Food Runner Tip Out</strong></p>
+		
+		
+		
+			
+				<label class="switchOne">
+			<input type="checkbox" id="foodRunnerYes" onchange="foodRunnerSelector()" checked="">
+			<span class="slider round"></span>
+			</label>
+			
+			
+			<p id="foodRunnerConfirm">Food Runner will be tipped out </p>
+		
+		
+		<p><strong>Bartender Tip Out</strong></p>
+		
+		<!-- Rounded switch -->
+		<label class="switchOne">
+		  <input type="checkbox" id="bartenderSwitch" onchange="bartenderSelector()" checked="">
+		  <span class="slider round"></span>
+		</label>
+		
+		<p id="bartenderConfirm">Bartenders will be tipped out </p>
+		
+		<p><strong>Event Tip out Percentage: </strong></p>
+			<p><select id="eventTipPercentage" onchange="eventTipSelector()">
+			  <option value="notSelected" selected=""> Select percentage</option>
+			  <option value="21">21</option>
+			  <option value="22">22</option>
+			  <option value="23">23</option>
+			  <option value="24">24</option>
+			  <option value="25">25</option>
+			  <option value="26">26</option>
+			  <option value="27">27</option>
+			  <option value="28">28</option>
+			  <option value="29">29</option>
+			  <option value="30">30</option>
+			</select></p>
+			<p id="eventTipConfirm"> Event tip percentage is set to 25%</p>
+		
+		<p><strong>Number Of Servers: </strong></p>
+			<p><select id="numberOfServers" onchange="numberOfServersSelector()">
+			  <option value="notSelected" selected="">Select number of servers</option>
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			  <option value="4">4</option>
+			  <option value="5">5</option>
+			  <option value="6">6</option>
+			  <option value="7">7</option>
+			  <option value="8">8</option>
+			  <option value="9">9</option>
+			  <option value="10">10</option>
+			</select></p>
+			<p id="numberOfServersConfirm">One server by default </p>
+		
+		
+		
+		</div>
+		
+		<div id="fields" class="userInput">
+			<p> <strong>Enter the numbers from your closing report</strong></p>
+		
+			Net Sales:<br>
+				<input type="number" id="net-sales" onchange="modifyValueNS()"><br>
+				<p></p>
+				
+			20% Auto Gratuity:<br>
+				<input type="number" id="20-auto-grat" onchange="modifyValue20AG()"><br>
+				<p></p>
+				
+			Event Auto Gratuity:<br>
+				<input type="number" id="event-auto-grat" onchange="modifyValueEG()"><br>
+				<p></p>
+				
+			Charge Tip:<br>
+				<input type="number" id="charge-tip" onchange="modifyValueCT()"><br>
+				<p></p>
+				
+			Liquor Total:<br>
+				<input type="number" id="liquor" onchange="modifyValueLiq()"><br>
+				<p></p>
+				
+			Beer Total:<br>
+				<input type="number" id="beer" onchange="modifyValueBeer()"><br>
+				<p></p>
+				
+			Wine Total:<br>
+				<input type="number" id="wine" onchange="modifyValueWine()"><br>
+				<p></p>
+				
+			Food Total:<br>
+				<input type="number" id="food" onchange="modifyValueFood()"><br>
+				<p></p>
+			
+			<button id="backButton" onclick="back()" disabled=""> &lt;==Back </button> 
+			
+			<span id="checkNumber">1</span>
+			
+			<button onclick="next()"> Next ==&gt;</button> 
+			
+			<br><p></p>
+			
+			<input id="woopButton" type="submit" value="Woop!" onclick="reports()">
+			
+			
+			
+			
+			
+				
+		</div>
+		
+		<p id="demo">Your reports will appear here. <br> 
+			Bartenders will be tipped out 2% of liqour + beer + wine sales.
+			<br> Foor Runners will be tipped out 2% of food sales.
+			<br> The rest is all yours!</p>
