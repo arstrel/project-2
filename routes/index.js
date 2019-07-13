@@ -25,5 +25,10 @@ router.get('/profile/edit', (req, res, next) => {
   res.render('editProfile')
 })
 
+//test page
+router.get('/test', (req, res, next) => {
+  res.render('test')
+})
+
 
 module.exports = router;
