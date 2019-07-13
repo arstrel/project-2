@@ -1,34 +1,63 @@
-<h2>Edit profile</h2>
-<a href="/profile">Back to Profile</a>
 
-<p>This should be per profile ID</p>
 
-<form action="/profile/edit" method="POST">
-  <label for="name">Change Name to: </label>
-  <input type="text" name="name">
+<div class="row">
 
-  <label for="email">Change email to: </label>
-  <input type="text" name="email">
+  <div class="col s12 m11 l8 offset-m1 offset-l2  my-1">
+    <div class="card-panel z-depth-5">
 
-  <label for="image">New picture for your profile</label>
-  <br><br>
-  <input type="file" name="image">
-  <br><br>
-  <div>
-  <label for="position">What is your position? </label>
-    <br>
-    
-    <select name="position" id="positionSelect">
-      <option value="server">Server</option>
-      <option value="manager">Manager</option>
-    </select>
-    <br><br>
+        <a class="btn waves-effect light-blue lighten-1" href="/profile">Back to Profile
+          <i class="material-icons left">arrow_back</i>
+        </a>
+      
+      <h4 class="center"> Edit profile</h4>
+      <div class="row ">
+      {{!-- form --}}
+        <form class="col m10 l9 offset-l1" action="/profile/edit" method="POST" enctype="multipart/form-data">
 
+          <div class="row">
+            <div class="input-field col s12 m12">
+              <i class="fas fa-user-circle prefix"></i>
+              <input id="name" type="text" class="validate" name="name">
+              <label for="name">Your Name </label>
+            </div>
+
+            <div class="input-field col s12 m12">
+              <i class="fas fa-at prefix"></i>
+              <input id="email" type="email" class="validate" name="email">
+              <label for="email">Your Email</label>
+            </div>
+
+            <div class="input-field col s12 m12">
+              <i class="fas fa-camera-retro prefix"></i>
+              <label for="image">Upload picture for your profile</label>
+              <br><br>
+              <input id="image" type="file" name="image" class="validate">
+            </div>
+
+            <div class="input-field col s12 m12">
+              <i class="fas fa-utensils prefix"></i>
+              <select name="position" id="positionSelect">
+                <option value="server">Server</option>
+                <option value="manager">Manager</option>
+              </select>
+              <label for="position">What is your position? </label>
+              <br><br>
+            </div>
+
+            <div class="input-field col s12 m12">
+              <i class="fa fa-unlock-alt prefix"></i>
+              <input id="password" type="password" class="validate" name="password">
+              <label for="password" class="">Password</label>
+            </div>
+          </div>
+      <!--row-->
+      </div>
+      <button class="btn waves-effect light-blue lighten-1 center">Save changes
+        <i class="material-icons right"> save</i>
+      </button>
+        </form>
+    </div>
+    <!--card-->
   </div>
-
-  <label for="password">Choose your password</label>
-  <input type="text" name="password">
-
-  <button>Save changes</button>
-
-</form>
+  <!--col-->
+</div>

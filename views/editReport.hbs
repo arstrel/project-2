@@ -1,44 +1,74 @@
-<h3>Edit report Page</h3>
-<a href="/profile">Back to Profile</a>
+<div class="row">
 
-<p>this should be per report ID</p>
-<p>Date: </p>
-<p>fields populateed with values from real check</p>
+  <div class="col s12 m11 l8 offset-m1 offset-l2  my-1">
+    <div class="card-panel z-depth-5">
 
+        <a class="btn waves-effect light-blue lighten-1" href="/profile">Back to Profile
+          <i class="material-icons left">arrow_back</i>
+        </a>
+      
+      <h4 class="center"> Edit report for: <span class="date">DATE</span></h4>
+      <div class="row ">
+      {{!-- form --}}
+        <form class="col m10 l9 offset-l1" action="/report/edit" method="POST">
+            
+            <div class="input-field col s12 m12">
+              <i class="fas fa-money-bill-wave prefix"></i>
+              <input id="sales" type="number" class="validate" name="sales">
+              <label for="sales">Total Sales: </label>
+            </div>
 
-<form action="/report/edit" method="POST">
-  <div>
-    <label for="position">Report for: </label>
-    <br>
-    <select name="position" id="positionSelect">
-      <option value="server">Server</option>
-      <option value="manager">Manager</option>
-    </select>
-    <br><br>
+            <div class="input-field col s12 m12">
+              <i class="fas fa-file-invoice-dollar prefix"></i>
+              <input id="regAutoGrat" type="number" class="validate" name="regAutoGrat">
+              <label for="regAutoGrat">Total Auto Gratuity: </label>
+            </div>
+
+            <div class="input-field col s12 m12">
+              <i class="fas fa-money-check-alt prefix"></i>
+              <input id="tips" type="number" class="validate" name="tips">
+              <label for="tips">Total Tips: </label>
+            </div>
+
+            <div class="input-field col s12 m12">
+              <i class="fas fa-comment-dollar prefix"></i>
+              <input id="tipoutBartender" type="number" class="validate" name="tipoutBartender">
+              <label for="tipoutBartender">Tip out to Bartender: </label>
+            </div>
+                        
+            <div class="input-field col s12 m12">
+              <i class="fas fa-user-tag prefix"></i>
+              <input id="totalTipoutBartender" type="number" class="validate" name="totalTipoutBartender">
+              <label for="totalTipoutBartender">Total tip to Bartenders (Manager):  </label>
+            </div>
+            
+            <div class="input-field col s12 m12">
+              <i class="fas fa-comment-dollar prefix"></i>
+              <input id="tipoutFoodRunner" type="number" class="validate" name="tipoutFoodRunner">
+              <label for="tipoutFoodRunner">Tip out for Food Runner: </label>
+            </div>
+                                    
+            <div class="input-field col s12 m12">
+              <i class="fas fa-user-tag prefix"></i>
+              <input id="totalTipoutFoodRunner" type="number" class="validate" name="totalTipoutFoodRunner">
+              <label for="totalTipoutFoodRunner">Total tip to Food Runner (Manager):  </label>
+            </div>
+            
+            <div class="input-field col s12 m12">
+              <i class="fas fa-piggy-bank prefix"></i>
+              <input id="reportedTips" type="number" class="validate" name="reportedTips">
+              <label for="reportedTips">Reported Tips: </label>
+            </div>
+
+   
+      <!--row-->
+      </div>
+      <button class="btn waves-effect light-blue lighten-1 center">Save changes
+        <i class="material-icons right"> save</i>
+      </button>
+        </form>
+    </div>
+    <!--card-->
   </div>
-
-  <label for="sales">Total Sales: </label>
-  <input type="number" name="sales" value="">
-
-  <label for="totalAutoGrat">Total Auto Gratuity: </label>
-  <input type="number" name="totalAutoGrat" value="">
-
-  <label for="tips">Total Tips: </label>
-  <input type="number" name="tips" value="">
-
-  <label for="tipoutBartender">Tip out to Bartender: </label>
-  <input type="number" name="tipoutBartender" value="">
-
-  <label for="tipoutFoodRunner">Tip out for Food Runner: </label>
-  <input type="number" name="tipoutFoodRunner" value="">
-
-  <label for="reportedTips">Reported Tips: </label>
-  <input type="number" name="reportedTips" value="">
-{{!-- 
-  if the report type is "manager" then change tipoutBartender and tipoutFoodRunner
-  for totalTipoutBartender and totalTipoutFoodRunner --}}
-
-
-  <button>Save changes</button>
-
-</form>
+  <!--col-->
+</div>
