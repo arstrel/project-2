@@ -2,6 +2,14 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
+@media (max-width: 450px) {
+  body {
+    padding: 20px; } }
+
+@media (max-width: 350px) {
+  body {
+    padding: 5px; } }
+
 a {
   color: #00B7FF; }
 
