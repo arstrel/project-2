@@ -7,4 +7,44 @@ a {
 .font-48 {
   font-size: 48px; }
 
+.my-1 {
+  margin-top: 20px; }
+
+.mb-0 {
+  margin-bottom: 0; }
+
+.ee {
+  letter-spacing: -0.8rem;
+  color: #c4c4c4; }
+
+#logo-container {
+  font-weight: 600; }
+
+#logo-container:hover .ee {
+  letter-spacing: 0;
+  color: #ffa726;
+  transition: all 0.3s;
+  transition-timing-function: cubic-bezier(0.69, -0.51, 0.44, 1.95); }
+
+#logo-container:hover .second-e {
+  color: #e65100;
+  transition: all 0.3s; }
+
+#logo-container:hover .braces {
+  color: #e65100;
+  transition: all 0.3s;
+  transition-delay: 0.1s;
+  transform: scale(1.3);
+  display: inline-block; }
+
+#logo-container:hover .colon {
+  display: inline; }
+
+.hundred {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  letter-spacing: -0.2rem; }
+
+.colon {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

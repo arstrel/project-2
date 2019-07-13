@@ -1,16 +1,15 @@
 <div class="row">
 
-  <div class="col s12 m11 l8 offset-m1 offset-l2">
+  <div class="col s12 m11 l8 offset-m1 offset-l2  my-1">
     <div class="card-panel z-depth-5">
 
       <div class="col">
-        <a class="btn waves-effect waves-light" href="/">Back
+        <a class="btn waves-effect light-blue lighten-1" href="/">Back
           <i class="material-icons left">arrow_back</i>
         </a>
       </div>
-
-      <h4 class="center"> Sign up form</h4>
-      <div class="row">
+      <h4 class="center"> Sign in form</h4>
+      <div class="row ">
       {{!-- form --}}
         <form class="col m10 l9 offset-l1" action="/signin" method="POST" enctype="multipart/form-data">
 
@@ -35,7 +34,6 @@
             </div>
 
             <div class="input-field col s12 m12">
-
               <i class="fas fa-utensils prefix"></i>
               <select name="position" id="positionSelect">
                 <option value="server">Server</option>
@@ -43,29 +41,22 @@
               </select>
               <label for="position">What is your position? </label>
               <br><br>
-
             </div>
-
 
             <div class="input-field col s12 m12">
               <i class="fa fa-unlock-alt prefix"></i>
               <input id="password" type="password" class="validate" name="password">
               <label for="password" class="">Password</label>
             </div>
-
-
           </div>
       <!--row-->
-      <button class="btn waves-effect waves-light center">Create account
+      <button class="btn waves-effect light-blue lighten-1 center">Create account
         <i class="fa fa-sign-in right"></i>
       </button>
         </form>
-
       </div>
     </div>
     <!--card-->
-
-
   </div>
   <!--col-->
 </div>
