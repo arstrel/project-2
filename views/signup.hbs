@@ -1,3 +1,17 @@
+
+{{#if msg}}
+
+<body onload="M.toast({html: '{{msg}}'})">
+
+</body>
+
+{{/if}}
+{{#if yay}}
+
+<body onload="M.toast({html: '{{yay}}'})">
+
+</body>
+{{/if}}
 <div class="row">
 
   <div class="col s12 m11 l8 offset-m1 offset-l2  my-1">
@@ -7,10 +21,10 @@
           <i class="material-icons left">arrow_back</i>
         </a>
       
-      <h4 class="center"> Sign in form</h4>
+      <h4 class="center"> Sign up form</h4>
       <div class="row ">
       {{!-- form --}}
-        <form class="col m10 l9 offset-l1" action="/signin" method="POST" enctype="multipart/form-data">
+        <form class="col m10 l9 offset-l1" action="/signup" method="POST" enctype="multipart/form-data">
 
           <div class="row">
             <div class="input-field col s12 m12">

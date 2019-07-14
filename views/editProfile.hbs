@@ -12,18 +12,18 @@
       <h4 class="center"> Edit profile</h4>
       <div class="row ">
       {{!-- form --}}
-        <form class="col m10 l9 offset-l1" action="/profile/edit" method="POST" enctype="multipart/form-data">
+        <form class="col m10 l9 offset-l1" action="/profile/edit/{{currentUser._id}}" method="POST" enctype="multipart/form-data">
 
           <div class="row">
             <div class="input-field col s12 m12">
               <i class="fas fa-user-circle prefix"></i>
-              <input id="name" type="text" class="validate" name="name">
+              <input id="name" type="text" class="validate" name="name" placeholder="{{currentUser.name}}">
               <label for="name">Your Name </label>
             </div>
 
             <div class="input-field col s12 m12">
               <i class="fas fa-at prefix"></i>
-              <input id="email" type="email" class="validate" name="email">
+              <input id="email" type="email" class="validate" name="email" placeholder="{{currentUser.username}}">
               <label for="email">Your Email</label>
             </div>
 

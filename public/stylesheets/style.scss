@@ -59,3 +59,22 @@ nav:hover {
 .colon {
   display: none;
 }
+
+@media (max-width: 600px) {
+  .margin-sm {
+    margin: 10px;
+  }
+}
+.w-400 {
+  max-width: 360px;
+  max-height: 370px;
+}
+.border-radius {
+  border-radius: 5px;
+}
+.larger {
+  font-size: 1.7em;
+}
+.larger > span {
+  margin-left: 10px;
+}

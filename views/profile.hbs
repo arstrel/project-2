@@ -1,29 +1,70 @@
-<h1>Profile</h1>
-<div class="row">
+<div class="container">
 
-<div class="col">
-  <a class="btn waves-effect light-blue lighten-1" href="/">Back
-    <i class="material-icons left">arrow_back</i>
-  </a>
+  <h1 class="center">Profile</h1>
+  {{#if yay}}
+
+  <body onload="M.toast({html: '{{yay}}'})">
+
+  </body>
+  {{/if}}
+  <div class="row">
+    <div class="col margin-sm">
+      <a class="btn waves-effect light-blue lighten-1" href="/">Back
+        <i class="material-icons left">arrow_back</i>
+      </a>
+    </div>
+    <div class="col margin-sm ">
+      <form action="/logout" method="POST">
+        <button class="btn waves-effect light-blue lighten-1">Logout
+          <i class="fas fa-sign-out-alt right"></i>
+        </button>
+      </form>
+    </div>
+
+  </div>
+  <div class="divider"></div>
+  <div class="row ">
+    <br>
+    <div class="col  w-400">
+      <img src="{{currentUser.image}}" alt="user image" class="responsive-img z-depth-2 border-radius">
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+
+        <p class="valign-wrapper larger">
+          <i class="fas fa-user prefix"></i>
+          <span> Name: {{currentUser.name}}</span>
+        </p>
+        <p class="valign-wrapper larger">
+          <i class="fas fa-at prefix"></i>
+          <span> Email: {{currentUser.username}}</span>
+        </p>
+        <p class="valign-wrapper larger">
+          <i class="fas fa-utensils prefix"></i>
+          <span> Position: {{currentUser.position}}</span>
+        </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col margin-sm ">
+          <a class="btn waves-effect amber darken-1" href="/profile/edit">Edit profile
+            <i class="material-icons right">edit</i>
+          </a>
+        </div>
+        <div class="col margin-sm ">
+          <form action="/profile/delete/{{currentUser._id}}" method="POST">
+            <button class="btn waves-effect waves-light red darken-1">Delete Profile
+              <i class="material-icons right">delete_forever</i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  {{#>_report}}
+  Something went wrong. Report partial not found
+  {{/_report}}
+
 </div>
-<div class="col">
-  <a class="btn waves-effect amber darken-1" href="/profile/edit">Edit profile
-    <i class="material-icons right">edit</i>
-  </a>
-</div>
-<div class="col">
-  <form action="/profile/delete" method="POST">
-   <button class="btn waves-effect waves-light red darken-1" >Delete Profile
-  <i class="material-icons right">delete_forever</i>
-  </button>
-  </form>
-</div>
-
-</div>
-
-
-<br><br>
-
-{{#>_report}}
-Something went wrong. Report partial not found
-{{/_report}}

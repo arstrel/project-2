@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema ({
 
-username: {type: String, unique: true},
+username: {type: String, unique: true}, //email ex. wolf@woo.com
 password: {type: String},
 googleID: String,
-email: String,
+name: String, // ex. Gaz Johnson
 image: String,
 position: String 
 
