@@ -402,7 +402,7 @@ function reports() {
 	
 }
 
-//set all fields to null
+//set all fields to empty
 function clearFields () {
 	document.getElementById("net-sales").value = "";
 	document.getElementById("20-auto-grat").value = "";

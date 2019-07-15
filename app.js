@@ -88,5 +88,7 @@ app.use((req, res, next) => {
 const index = require('./routes/index');
 app.use('/', index);
 
+const calculatorRoutes = require('./routes/calculatorRoutes');
+app.use('/', calculatorRoutes);
 
 module.exports = app;

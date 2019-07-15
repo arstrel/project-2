@@ -63,7 +63,6 @@ router.post('/signup',  uploadMagic.single('image'), (req, res, next) => {
       res.redirect("/signup");
     }
   });
-  
     
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
@@ -85,8 +84,6 @@ router.post('/signup',  uploadMagic.single('image'), (req, res, next) => {
     .catch(err => {
       next(err)
     })
-    
-    
 });
 
 router.post(
@@ -105,7 +102,6 @@ router.post('/logout', (req, res, next)=> {
   req.flash('success', 'Logged out successfully');
   res.redirect('/')
 });
-
 
 router.post('/profile/edit/:id',  uploadMagic.single('image'), (req, res, next) => {
   let name = req.body.name;
@@ -146,11 +142,5 @@ router.post('/profile/delete/:id', (req, res, next) => {
       next(err);
   })
 })
-
-
-
-
-
-
 
 module.exports = router;
