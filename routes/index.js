@@ -115,28 +115,20 @@ router.post('/profile/edit/:id',  uploadMagic.single('image'), (req, res, next) 
   else {img = req.user.image};
   let userID = req.params.id;
   let position = req.body.position;
-  let password = req.body.password;
-
-  //how long does the user stay logged in?
-
-// ERROR POST /profile/edit/5d2b82d6204aaf113ed7b889 Error: Illegal arguments: undefined, string
-//   at Object.bcrypt.hashSync (/mnt/c/Users/arstr/Desktop/Ironhack/project-2/node_modules/bcryptjs/dist/bcrypt.js:189:19)
-//   at /mnt/c/Users/arstr/Desktop/Ironhack/project-2/routes/index.js:121:33
-
-//causes ^^^^^^^ this error
-  // const salt = bcrypt.genSaltSync(10);
-  // const hashedPassword = bcrypt.hashSync(password, salt);
-  
+  let newPasswordString = req.body.password;
+ 
   User.findByIdAndUpdate(userID, {
     username: username,
     name: name,
     image: img,
     position: position,
-    // password: hashedPassword
   })
-  .then(() => {
-    req.flash('success', "User info saved");
-    res.redirect('/profile')
+  .then((updatedUser) => {
+    updatedUser.setPassword(newPasswordString, function(){
+    updatedUser.save();
+      req.flash('success', "User info saved");
+      res.redirect('/profile')
+    });
   })
   .catch(err => {
     req.flash('error', "Error editting user info")
