@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 router.get('/profile', (req, res, next) => {
-  if(req.user) {
+  if(req.isAuthenticated()) {
     res.render('profile')
   } else {
     req.flash('error', 'Login to view profile page');
@@ -32,7 +32,7 @@ router.get('/report/edit', (req, res, next) => {
   res.render('editReport')
 })
 router.get('/profile/edit', (req, res, next) => {
-  if(req.user) {
+  if(req.isAuthenticated()) {
     res.render('editProfile')
   } else {
     req.flash('error', "Log in first to edit your profile");
@@ -117,6 +117,13 @@ router.post('/profile/edit/:id',  uploadMagic.single('image'), (req, res, next) 
   let position = req.body.position;
   let password = req.body.password;
 
+  //how long does the user stay logged in?
+
+// ERROR POST /profile/edit/5d2b82d6204aaf113ed7b889 Error: Illegal arguments: undefined, string
+//   at Object.bcrypt.hashSync (/mnt/c/Users/arstr/Desktop/Ironhack/project-2/node_modules/bcryptjs/dist/bcrypt.js:189:19)
+//   at /mnt/c/Users/arstr/Desktop/Ironhack/project-2/routes/index.js:121:33
+
+//causes ^^^^^^^ this error
   // const salt = bcrypt.genSaltSync(10);
   // const hashedPassword = bcrypt.hashSync(password, salt);
   
@@ -127,8 +134,7 @@ router.post('/profile/edit/:id',  uploadMagic.single('image'), (req, res, next) 
     position: position,
     // password: hashedPassword
   })
-  .then(updatedUser => {
-    console.log(updatedUser);
+  .then(() => {
     req.flash('success', "User info saved");
     res.redirect('/profile')
   })
