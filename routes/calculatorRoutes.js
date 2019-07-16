@@ -47,4 +47,45 @@ router.post("/check-save", (req, res, next) => {
     });
 });
 
+
+router.post('/attach-check-to-report', (req, res, next)=> {
+  //attach check id to corresponding report
+  Report.findByIdAndUpdate(req.body.reportId, {
+    $push: { checks: req.body.checkId }
+  })
+  .then((report)=> {
+    
+    res.json({message: `Check attached to the report`})
+   
+  })
+  .catch((error)=> {
+    
+    res.json({message: `Something went wrong saving check to report`})
+  })
+})
+
+router.post('/save-finished-report', (req, res, next)=> {
+  console.log(req.body);
+  Report.findByIdAndUpdate(req.body.reportId,{
+    sales: req.body.sales,
+    totalAutoGrat: req.body.totalAutoGrat,
+    tips: req.body.tips,
+    tipoutBartender: req.body.tipoutBartender,
+    tipoutFoodRunner: req.body.tipoutFoodRunner,
+    reportedTips: req.body.reportedTips ,
+    totalTipoutBartender: req.body.totalTipoutBartender,
+    totalTipoutFoodRunner: req.body.totalTipoutFoodRunner
+  })
+  .then(report => {
+    res.json({message: `Report complete`})
+  })
+  .catch(err => {
+    res.json({message: `Error finishing the report`})
+  })
+
+
+
+})
+
+
 module.exports = router;

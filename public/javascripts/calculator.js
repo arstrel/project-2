@@ -361,13 +361,26 @@ function createEmployeesReport () {
 	reportedTipsPerPerson = totalTipsPerPerson - totalTipsToBartenderPerPerson - totalTipToFoodRunnerPerPerson;
 	var takeHome = totalAutoGratPerPerson + reportedTipsPerPerson;
 	
-	return "Total Sales: " + totalSalesPerPerson.toFixed(2) +
-			"<br> Total Auto Grats(code 28): " + totalAutoGratPerPerson.toFixed(2) +
-			"<br> Total Tips: " + totalTipsPerPerson.toFixed(2) +
-			"<br> Tips to Bartender: " + totalTipsToBartenderPerPerson.toFixed(2) +
-			"<br> Tips to Food Runner: " + totalTipToFoodRunnerPerPerson.toFixed(2) +
-			"<br> Reported Tips(code 78): " + reportedTipsPerPerson.toFixed(2) + 
-			"<br> <br> <i>For Your info, take home tips: </i>" + takeHome.toFixed(2)
+
+	let employeesReport = {
+		reportInAString: "Total Sales: " + totalSalesPerPerson.toFixed(2) +
+		"<br> Total Auto Grats(code 28): " + totalAutoGratPerPerson.toFixed(2) +
+		"<br> Total Tips: " + totalTipsPerPerson.toFixed(2) +
+		"<br> Tips to Bartender: " + totalTipsToBartenderPerPerson.toFixed(2) +
+		"<br> Tips to Food Runner: " + totalTipToFoodRunnerPerPerson.toFixed(2) +
+		"<br> Reported Tips(code 78): " + reportedTipsPerPerson.toFixed(2) + 
+		"<br> <br> <i>For Your info, take home tips: </i>" + takeHome.toFixed(2),
+
+		totalSales: totalSalesPerPerson.toFixed(2),
+		totalAutoGrats: totalAutoGratPerPerson.toFixed(2),
+		totalTips: totalTipsPerPerson.toFixed(2),
+		tipsToBartender: totalTipsToBartenderPerPerson.toFixed(2),
+		tipsToFoodRunner: totalTipToFoodRunnerPerPerson.toFixed(2),
+		reportedTips: reportedTipsPerPerson.toFixed(2),
+		takeHome: takeHome.toFixed(2)
+	}
+
+	return employeesReport
 			
 }
 
@@ -377,12 +390,25 @@ function createManagersReport () {
 	
 	var totalTipsToFoodRunner = totalTipToFoodRunnerPerPerson * numberOfServers;
 	
-	return "Total Sales: " + totalSalesPerPerson.toFixed(2) +
-			"<br> Total Auto Grats(code 28): " + totalAutoGratPerPerson.toFixed(2) +
-			"<br> Total Tips: " + totalTipsPerPerson.toFixed(2) +
-			"<br> Tips to Bartender: " + totalTipsToBartender.toFixed(2) +
-			"<br> Tips to Food Runner: " + totalTipsToFoodRunner.toFixed(2) +
-			"<br> Reported Tips(code 78): " + reportedTipsPerPerson.toFixed(2) 
+	let managersReport = {
+		reportInAString: "Total Sales: " + totalSalesPerPerson.toFixed(2) +
+		"<br> Total Auto Grats(code 28): " + totalAutoGratPerPerson.toFixed(2) +
+		"<br> Total Tips: " + totalTipsPerPerson.toFixed(2) +
+		"<br> Tips to Bartender: " + totalTipsToBartender.toFixed(2) +
+		"<br> Tips to Food Runner: " + totalTipsToFoodRunner.toFixed(2) +
+		"<br> Reported Tips(code 78): " + reportedTipsPerPerson.toFixed(2),
+
+		
+		totalSales: totalSalesPerPerson.toFixed(2),
+		totalAutoGrats: totalAutoGratPerPerson.toFixed(2),
+		totalTips: totalTipsPerPerson.toFixed(2),
+		tipsToBartender: totalTipsToBartender.toFixed(2),
+		tipsToFoodRunner: totalTipsToFoodRunner.toFixed(2),
+		ReportedTips: reportedTipsPerPerson.toFixed(2),
+
+	}
+
+	return managersReport
 }
 
 function reports() {
@@ -396,9 +422,15 @@ function reports() {
 		
 	}
 	
-	document.getElementById("demo").innerHTML = "<strong>Report for the Servers: </strong> <br>" + createEmployeesReport() + 
-												"<br> <p><strong>Report for the Manager: </strong><br>" + createManagersReport() + "</p>";
+	document.getElementById("demo").innerHTML = "<strong>Report for the Servers: </strong> <br>" + createEmployeesReport().reportInAString + 
+												"<br> <p><strong>Report for the Manager: </strong><br>" + createManagersReport().reportInAString + "</p>";
 	
+	let report = {
+	 employeesReport:createEmployeesReport(),
+	 managersReport: createManagersReport()
+
+	}
+	return report
 }
 
 //set all fields to empty
