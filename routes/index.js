@@ -67,23 +67,28 @@ router.post('/signup',  uploadMagic.single('image'), (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
     
-    User.create({
+    User.register(new User({
       username: email,
       name: name,
       image: img,
       position: position,
-      password: hashedPassword
-    })
-    .then((newlyCreated) => {
-      console.log(newlyCreated);
+      
+    
+    
+    }), req.body.password, function(err, newlyCreated) {
+      if (err) {
+        console.log('error while user register!', err);
+        return next(err);
+      }
+  
       req.login(newlyCreated, () => {
-        req.flash('success', `${newlyCreated.username} user profile created successfully`)
-        res.redirect('/profile')
+      req.flash('success', `${newlyCreated.username} user profile created successfully`)
+      res.redirect('/profile')
       })
-    })
-    .catch(err => {
-      next(err)
-    })
+      
+    });
+
+
 });
 
 router.post(
@@ -113,6 +118,7 @@ router.post('/profile/edit/:id',  uploadMagic.single('image'), (req, res, next) 
   let position = req.body.position;
   let newPasswordString = req.body.password;
  
+
   User.findByIdAndUpdate(userID, {
     username: username,
     name: name,
