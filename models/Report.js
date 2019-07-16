@@ -11,6 +11,7 @@ tipoutFoodRunner: Number,
 reportedTips: Number,
 totalTipoutBartender: Number,
 totalTipoutFoodRunner: Number,
+takeHome: Number,
 config: {type: Schema.Types.ObjectId, ref: "Setup"},
 checks: [{type: Schema.Types.ObjectId, ref: "User"}]
 }, {

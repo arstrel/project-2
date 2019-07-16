@@ -32,7 +32,6 @@ document.addEventListener(
           numberOfServers: +numberOfServersDropdown.value
         })
         .then(report => {
-          console.log(report);
           reportId = report.data._id;
           M.toast({ html: `Configuration saved` });
         })
@@ -96,23 +95,7 @@ document.addEventListener(
 
        let report = reports();
 
-       console.log(
-         "Servers: " +
-       report.employeesReport.totalSales,
-       report.employeesReport.totalAutoGrats,
-       report.employeesReport.totalTips,
-       report.employeesReport.tipsToBartender,
-       report.employeesReport.tipsToFoodRunner,
-       report.employeesReport.reportedTips,
-       report.employeesReport.takeHome + 
-       "Managers: " + 
-       report.managersReport.totalSales,
-       report.managersReport.totalAutoGrats,
-       report.managersReport.totalTips,
-       report.managersReport.tipsToBartender,
-       report.managersReport.tipsToFoodRunner,
-       report.managersReport.ReportedTips
-       );
+  
 
       axios.post('/save-finished-report', {
         //+ in front of values turnes strings into numbers
@@ -124,7 +107,8 @@ document.addEventListener(
         tipoutFoodRunner: +report.employeesReport.tipsToFoodRunner,
         reportedTips: +report.employeesReport.reportedTips,
         totalTipoutBartender: +report.managersReport.tipsToBartender,
-        totalTipoutFoodRunner: +report.managersReport.tipsToFoodRunner
+        totalTipoutFoodRunner: +report.managersReport.tipsToFoodRunner,
+        takeHome: +report.employeesReport.takeHome
       })
       .then(response => {
         M.toast({ html: response.data.message });

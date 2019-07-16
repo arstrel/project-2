@@ -1,3 +1,15 @@
+  {{#if yay}}
+
+  <body onload="M.toast({html: '{{yay}}'})">
+
+  </body>
+  {{/if}}
+  {{#if msg}}
+
+  <body onload="M.toast({html: '{{msg}}'})">
+
+  </body>
+  {{/if}}
 <div class="row">
 
   <div class="col s12 m11 l8 offset-m1 offset-l2  my-1">
@@ -8,17 +20,20 @@
         </a>
       
       <div class="row ">
-      <h4 class="center"> Detailed report for: <span class="date">DATE</span></h4>
+      <h3 class="center"> Detailed report for: <span class="date">{{report.created_at}}</span></h3>
         <div class="col">
 
       
         <p>Report for: NAME, POSITION</p>
-        <p>Total Sales: <span class="value"></span></p>
-        <p>Total Auto Gratuity: <span class="value"></span></p>
-        <p>Total Tips: <span class="value"></span></p>
-        <p>Tip out to Bartender: <span class="value"></span></p>
-        <p>Tip out for Food Runner: <span class="value"></span></p>
-        <p>Reported Tips: <span class="value"></span></p>
+        <p>Total Sales: <span class="value">{{report.sales}}</span></p>
+        <p>Total Auto Gratuity: <span class="value">{{report.totalAutoGrat}}</span></p>
+        <p>Total Tips: <span class="value">{{report.tips}}</span></p>
+        <p>Tip out to Bartender: <span class="value">{{report.tipoutBartender}}</span></p>
+        <p>Tip out for Food Runner: <span class="value">{{report.tipoutFoodRunner}}</span></p>
+        <p>Reported Tips: <span class="value">{{report.reportedTips}}</span></p>
+        <p><i>Take Home:</i><span class="value">{{report.takeHome}}</span></p>
+        <p><b>(Manager)</b>Total tip to bar:<span class="value">{{report.totalTipoutBartender}}</span></p>
+        <p><b>(Manager)</b>Total tip to foor runner<span class="value">{{report.totalTipoutFoodRunner}}</span></p>
        
         
 

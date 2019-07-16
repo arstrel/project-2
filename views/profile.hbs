@@ -7,6 +7,12 @@
 
   </body>
   {{/if}}
+  {{#if msg}}
+
+  <body onload="M.toast({html: '{{msg}}'})">
+
+  </body>
+  {{/if}}
   <div class="row">
     <div class="col margin-sm">
       <a class="btn waves-effect light-blue lighten-1" href="/">Back
@@ -63,8 +69,14 @@
     </div>
   </div>
   <div class="divider"></div>
-  {{#>_report}}
+  <div class="row">
+
+  {{#each user.reports}}
+  {{#>_report this}}
   Something went wrong. Report partial not found
   {{/_report}}
+
+  {{/each}}
+  </div>
 
 </div>

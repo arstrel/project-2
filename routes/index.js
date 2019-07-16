@@ -1,6 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 const User = require("../models/User");
+const Report = require('../models/Report');
+const Check = require('../models/Check');
+const Setup = require('../models/Setup');
 const bcrypt = require("bcryptjs");
 const flash = require("connect-flash");
 const passport = require("passport");
@@ -13,7 +16,13 @@ router.get('/', (req, res, next) => {
 });
 router.get('/profile', (req, res, next) => {
   if(req.isAuthenticated()) {
-    res.render('profile')
+    User.findById(req.user._id).populate('reports')
+    .then((user)=> {
+      res.render('profile', {user: user})
+    })
+    .catch(err=> {
+      next(err)
+    })
   } else {
     req.flash('error', 'Login to view profile page');
     res.redirect('/')
@@ -39,9 +48,40 @@ router.get('/profile/edit', (req, res, next) => {
     res.redirect('/');
   }
 })
-router.get('/report/detailed', (req, res, next) => {
-  res.render('reportDetailed')
-})
+router.get('/report/detailed/:id', (req, res, next) => {
+  if(req.isAuthenticated()) {
+    Report.findById(req.params.id)
+    .then(report => {
+      req.flash('success', "Here is your report")
+      res.render('reportDetailed', {report:report})
+    })
+    .catch(err => {
+      res.flash('error', "Cannot fetch the report");
+      res.redirect('/profile')
+    })
+  } else {
+    req.flash('error', "Log in first to edit your profile");
+    res.redirect('/');
+  }
+});
+
+router.post('/report/delete/:id', (req, res, next) => {
+  if(req.isAuthenticated()) {
+    Report.findByIdAndRemove(req.params.id)
+    .then(() => {
+      req.flash('success','Report deleted');
+      res.redirect('/profile')
+    })
+    .catch(err => {
+      req.flash('error', "Cannot fetch the report");
+      res.redirect('/profile')
+    })
+  } else {
+    req.flash('error', "Log in first to edit your profile");
+    res.redirect('/');
+}});
+
+
 
 //signup button
 router.post('/signup',  uploadMagic.single('image'), (req, res, next) => {
@@ -63,32 +103,22 @@ router.post('/signup',  uploadMagic.single('image'), (req, res, next) => {
       res.redirect("/signup");
     }
   });
-    
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    
     User.register(new User({
       username: email,
       name: name,
       image: img,
       position: position,
-      
-    
     
     }), req.body.password, function(err, newlyCreated) {
       if (err) {
         console.log('error while user register!', err);
         return next(err);
       }
-  
       req.login(newlyCreated, () => {
       req.flash('success', `${newlyCreated.username} user profile created successfully`)
       res.redirect('/profile')
       })
-      
     });
-
-
 });
 
 router.post(
