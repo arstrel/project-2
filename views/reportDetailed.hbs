@@ -20,20 +20,18 @@
         </a>
       
       <div class="row ">
-      <h3 class="center"> Detailed report for: <span class="date">{{report.created_at}}</span></h3>
+      <h3 class="center"> Detailed report for: <p id="date">{{report.created_at}}</p></h3>
         <div class="col">
 
-      
-        <p>Report for: NAME, POSITION</p>
         <p>Total Sales: <span class="value">{{report.sales}}</span></p>
         <p>Total Auto Gratuity: <span class="value">{{report.totalAutoGrat}}</span></p>
         <p>Total Tips: <span class="value">{{report.tips}}</span></p>
         <p>Tip out to Bartender: <span class="value">{{report.tipoutBartender}}</span></p>
         <p>Tip out for Food Runner: <span class="value">{{report.tipoutFoodRunner}}</span></p>
         <p>Reported Tips: <span class="value">{{report.reportedTips}}</span></p>
-        <p><i>Take Home:</i><span class="value">{{report.takeHome}}</span></p>
-        <p><b>(Manager)</b>Total tip to bar:<span class="value">{{report.totalTipoutBartender}}</span></p>
-        <p><b>(Manager)</b>Total tip to foor runner<span class="value">{{report.totalTipoutFoodRunner}}</span></p>
+        <p><i>Take Home: </i><span class="value">{{report.takeHome}}</span></p>
+        <p><b>(Manager)</b>Total tip to bar: <span class="value">{{report.totalTipoutBartender}}</span></p>
+        <p><b>(Manager)</b>Total tip to foor runner: <span class="value">{{report.totalTipoutFoodRunner}}</span></p>
        
         
 
@@ -49,3 +47,10 @@
   </div>
   <!--col-->
 </div>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+<script>
+let myAwkwardDate = document.getElementById('date');
+//let newCoolDate = moment(myAwkwardDate.innerText).format('YYYY-MM-DD hh:mma');
+let newCoolDate = moment(myAwkwardDate.innerText).format('LLLL');
+myAwkwardDate.innerHTML = newCoolDate;
+</script>

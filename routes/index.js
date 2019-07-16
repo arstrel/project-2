@@ -52,8 +52,8 @@ router.get('/report/detailed/:id', (req, res, next) => {
   if(req.isAuthenticated()) {
     Report.findById(req.params.id)
     .then(report => {
-      req.flash('success', "Here is your report")
-      res.render('reportDetailed', {report:report})
+     
+      res.render('reportDetailed', {report:report, yay: "Here is your report"})
     })
     .catch(err => {
       res.flash('error', "Cannot fetch the report");
