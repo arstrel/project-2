@@ -10,7 +10,9 @@ tipoutBartender: Number,
 tipoutFoodRunner: Number,
 reportedTips: Number,
 totalTipoutBartender: Number,
-totalTipoutFoodRunner: Number
+totalTipoutFoodRunner: Number,
+config: {type: Schema.Types.ObjectId, ref: "Setup"},
+checks: [{type: Schema.Types.ObjectId, ref: "User"}]
 }, {
   timestamps: {
     createdAt: "created_at",

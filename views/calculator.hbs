@@ -1,3 +1,16 @@
+{{#if msg}}
+
+<body onload="M.toast({html: '{{msg}}'})">
+
+</body>
+
+{{/if}}
+{{#if yay}}
+
+<body onload="M.toast({html: '{{yay}}'})">
+
+</body>
+{{/if}}
 <div class="row">
 
   <div class="col s12 m12 l10 offset-l1  my-1">
@@ -9,11 +22,10 @@
 
       <h4 class="center"> Calculator</h4>
       <div class="row ">
-        {{!-- form: sent post request with axios with values and clear fields--}}
-        <form class="col m10 l9 offset-l1" action="" method="" >
 
+        <form action="" method="">
           <div class="row">
-  {{!-- old calculator starts here --}}
+            {{!-- old calculator starts here --}}
             <div id="parameters" class="userInput">
               <p><strong>Food Runner Tip Out</strong></p>
 
@@ -44,12 +56,12 @@
 
               <p><strong>Event Tip out Percentage: </strong></p>
               <p><select id="eventTipPercentage" onchange="eventTipSelector()">
-                  <option value="notSelected" selected=""> Select percentage</option>
+                 
                   <option value="21">21</option>
                   <option value="22">22</option>
                   <option value="23">23</option>
                   <option value="24">24</option>
-                  <option value="25">25</option>
+                  <option value="25" selected>25</option>
                   <option value="26">26</option>
                   <option value="27">27</option>
                   <option value="28">28</option>
@@ -60,8 +72,8 @@
 
               <p><strong>Number Of Servers: </strong></p>
               <p><select id="numberOfServers" onchange="numberOfServersSelector()">
-                  <option value="notSelected" selected="">Select number of servers</option>
-                  <option value="1">1</option>
+                  
+                  <option value="1" selected>1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
@@ -74,73 +86,78 @@
                 </select></p>
               <p id="numberOfServersConfirm">One server by default </p>
 
-
-
-            </div>
-
-            <div id="fields" class="userInput">
-              <p> <strong>Enter the numbers from your closing report</strong></p>
-
-              Net Sales:<br>
-              <input type="number" id="net-sales" onchange="modifyValueNS()"><br>
-              <p></p>
-
-              20% Auto Gratuity:<br>
-              <input type="number" id="20-auto-grat" onchange="modifyValue20AG()"><br>
-              <p></p>
-
-              Event Auto Gratuity:<br>
-              <input type="number" id="event-auto-grat" onchange="modifyValueEG()"><br>
-              <p></p>
-
-              Charge Tip:<br>
-              <input type="number" id="charge-tip" onchange="modifyValueCT()"><br>
-              <p></p>
-
-              Liquor Total:<br>
-              <input type="number" id="liquor" onchange="modifyValueLiq()"><br>
-              <p></p>
-
-              Beer Total:<br>
-              <input type="number" id="beer" onchange="modifyValueBeer()"><br>
-              <p></p>
-
-              Wine Total:<br>
-              <input type="number" id="wine" onchange="modifyValueWine()"><br>
-              <p></p>
-
-              Food Total:<br>
-              <input type="number" id="food" onchange="modifyValueFood()"><br>
-              <p></p>
-
-              <button id="backButton" disabled=""> &lt;==Back </button>
-
-              <span id="checkNumber">1</span>
-
-              <button id="nextButton"> Save & Next ==&gt;</button>
-
-              <br>
-              <p></p>
-
-           
-
+              <button class="btn waves-effect light-blue lighten-1 center" id="save-config-btn">Save config
+                <i class="material-icons right"> save </i>
+              </button>
 
             </div>
+        </form>
+        {{!-- form: sent post request with axios with values and clear fields--}}
+        <form class="col m10 l9 offset-l1" action="/report" method="POST">
+          <div id="fields" class="userInput">
+            <p> <strong>Enter the numbers from your closing report</strong></p>
 
-            <p id="demo">Your reports will appear here. <br>
-              Bartenders will be tipped out 2% of liqour + beer + wine sales.
-              <br> Foor Runners will be tipped out 2% of food sales.
-              <br> The rest is all yours!</p>
+            Net Sales:<br>
+            <input type="number" id="net-sales" onchange="modifyValueNS()"><br>
+            <p></p>
+
+            20% Auto Gratuity:<br>
+            <input type="number" id="20-auto-grat" onchange="modifyValue20AG()"><br>
+            <p></p>
+
+            Event Auto Gratuity:<br>
+            <input type="number" id="event-auto-grat" onchange="modifyValueEG()"><br>
+            <p></p>
+
+            Charge Tip:<br>
+            <input type="number" id="charge-tip" onchange="modifyValueCT()"><br>
+            <p></p>
+
+            Liquor Total:<br>
+            <input type="number" id="liquor" onchange="modifyValueLiq()"><br>
+            <p></p>
+
+            Beer Total:<br>
+            <input type="number" id="beer" onchange="modifyValueBeer()"><br>
+            <p></p>
+
+            Wine Total:<br>
+            <input type="number" id="wine" onchange="modifyValueWine()"><br>
+            <p></p>
+
+            Food Total:<br>
+            <input type="number" id="food" onchange="modifyValueFood()"><br>
+            <p></p>
+            <input type="hidden" id="reportId" name="reportId" value="{{reportId}}">
+
+            <button id="backButton" disabled=""> &lt;==Back </button>
+
+            <span id="checkNumber">1</span>
+
+            <button id="nextButton"> Save & Next ==&gt;</button>
+
+            <br>
+            <p></p>
+
+
+
+
           </div>
-{{!-- old calculator end here --}}
-          <!--row-->
+
+          <p id="demo">Your reports will appear here. <br>
+            Bartenders will be tipped out 2% of liqour + beer + wine sales.
+            <br> Foor Runners will be tipped out 2% of food sales.
+            <br> The rest is all yours!</p>
       </div>
-      <button class="btn waves-effect light-blue lighten-1 center"  onclick="reports()">Teep!
-       <i class="material-icons right"> playlist_add_check </i>
-      </button>
-      </form>
+      {{!-- old calculator end here --}}
+      <!--row-->
     </div>
-    <!--card-->
+    <button class="btn waves-effect light-blue lighten-1 center" onclick="reports()">Teep!
+      <i class="material-icons right"> playlist_add_check </i>
+    </button>
+    </form>
   </div>
-  <!--col-->
+  <!--card-->
+</div>
+<!--col-->
 </div>

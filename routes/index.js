@@ -57,7 +57,7 @@ router.post('/signup',  uploadMagic.single('image'), (req, res, next) => {
     req.flash('error', "Please fill in all the fields")
     res.redirect("/signup");
   }
-  User.findOne({ username: name }).then(user => {
+  User.findOne({ username: email }).then(user => {
     if (user !== null) {
       req.flash('error', "The username already exists")
       res.redirect("/signup");

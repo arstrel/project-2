@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 const setupSchema = new Schema ({
 eventTipPercentage: Number,
 tipoutPercentage: Number,
-tipoutfoodRunnerPercentage: Number
+tipoutfoodRunnerPercentage: Number,
+doTipFoodRunner: Boolean,
+doTipBartender: Boolean,
+numberOfServers: Number
 }, {
   timestamps: {
     createdAt: "created_at",

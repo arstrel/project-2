@@ -11,7 +11,7 @@ googleID: String,
 name: String, // ex. Gaz Johnson
 image: String,
 position: String,
-
+reports: [{type: Schema.Types.ObjectId, ref: "Report"}]
 }, {
   timestamps: {
     createdAt: "created_at",

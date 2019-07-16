@@ -165,7 +165,6 @@ function next() {
 	
 	try {
 		displayCheck(pageCounter - 1);
-		console.log('NEXT: tried display check pageCounter: ' + (pageCounter - 1))
 	}
 	catch(err) {
 		
