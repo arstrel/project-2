@@ -1,40 +1,56 @@
+<div class="col s12 m6">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title">Daily Report</span>
+      <p id="date">Created on {{this.fancyTime}}</p>
+      <p> You made ${{this.takeHome}} this day.
 
-  <div class="col s12 m6">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">Daily Report</span>
-        <p id="date">Created on {{this.fancyTime}}</p>
-          <p> You made ${{this.takeHome}} this day.</p>
-      </div>
-      <div class="card-action">
+      </p>
+    </div>
+    <div class="card-action">
 
-        <div class="row mb-0">
+      <div class="row mb-0">
 
-          <div class="col">
-            <a class="btn waves-effect light-blue lighten-1" href="/report/detailed/{{this._id}}">Details
-              <i class="material-icons right">more</i>
-            </a>
+        <div class="col">
+          <a class="btn waves-effect light-blue lighten-1" href="/report/detailed/{{this._id}}">Details
+            <i class="material-icons right">more</i>
+          </a>
+        </div>
+
+        <div class="col">
+          <!-- Modal Trigger -->
+          <a class="btn waves-effect waves-light red darken-1 modal-trigger" href="#modal{{@index}}">Delete
+            <i class="material-icons right">delete_forever</i>
+          </a>
+        </div>
+
+
+
+        <!-- Modal Structure -->
+        <div id="modal{{@index}}" class="modal">
+          <div class="modal-content">
+            <h4>Are you sure you want to delete the report?</h4>
+            <p>This action cannot be undone. Once deleted this report will be foverer lost.</p>
           </div>
-          <div class="col">
-            <a class="btn waves-effect amber darken-1" href="/report/edit/{{this._id}}">Edit
-              <i class="material-icons right">edit</i>
-            </a>
-          </div>
-          <div class="col">
-            <form action="/report/delete/{{this._id}}" method="POST">
-              <button class="btn waves-effect waves-light red darken-1">Delete
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Go back</a>
+            <form action="/report/delete/{{this._id}}" method="POST" id="modalForm">
+              <button class="modal-close btn waves-effect waves-light red darken-1">Delete
                 <i class="material-icons right">delete_forever</i>
               </button>
             </form>
           </div>
         </div>
 
+
       </div>
+
     </div>
   </div>
+</div>
 {{!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
 <script>
-let myAwkwardDate = document.getElementById('date');
-let newCoolDate = moment(myAwkwardDate.innerText).format('LLLL');
-myAwkwardDate.innerHTML = newCoolDate;
+  let myAwkwardDate = document.getElementById('date');
+  let newCoolDate = moment(myAwkwardDate.innerText).format('LLLL');
+  myAwkwardDate.innerHTML = newCoolDate;
 </script> --}}

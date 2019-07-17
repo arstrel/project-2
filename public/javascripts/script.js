@@ -59,9 +59,7 @@ document.addEventListener(
         })
         .then(check => {
           M.toast({
-            html: `Check ${
-              check.data._id
-            } saved, ready for the next. Belong to report ${reportId}`
+            html: `Check saved`
           });
 
           axios

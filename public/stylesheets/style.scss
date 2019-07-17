@@ -93,5 +93,10 @@ input {
   width: 300px;
 }
 .d-flex {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
+}
+
+#modalForm {
+  display: inline;
 }

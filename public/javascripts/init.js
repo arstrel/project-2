@@ -6,6 +6,10 @@
       indicators: true
     });
 
+    $(document).ready(function(){
+      $('.modal').modal();
+    });
+   
     $('.sidenav').sidenav();
 
     var elems = document.querySelectorAll('select');
