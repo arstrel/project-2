@@ -39,6 +39,7 @@ document.addEventListener(
           M.toast({ html: "Something went wrong saving the config" });
           console.log(error);
         });
+        instance.next();
     };
 
     nextButton.onclick = function(e) {
