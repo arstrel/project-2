@@ -6,21 +6,7 @@
   margin: 10px;
 }
 
-.userInput {
-  width: 340px;
-  /* float: left; */
-  margin: 20px;
-  font-family: sans-serif;
+#eventTipPercentage, #numberOfServers {
+  width: 300px;
 }
 
-#woopButton {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
-}
