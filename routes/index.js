@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs");
 const flash = require("connect-flash");
 const passport = require("passport");
 const uploadMagic = require('../config/cloudinary-setup');
+const moment = require('moment');
 
 
 /* GET home page */
@@ -18,6 +19,12 @@ router.get('/profile', (req, res, next) => {
   if(req.isAuthenticated()) {
     User.findById(req.user._id).populate('reports')
     .then((user)=> {
+      for(let i=0; i<user.reports.length; i++) {
+
+        user.reports[i].fancyTime = moment(user.reports[i].created_at).format('LLLL');
+        console.log(moment(user.reports[i].created_at).format('LLLL'));
+      }
+
       res.render('profile', {user: user})
     })
     .catch(err=> {
@@ -35,7 +42,11 @@ router.get('/login', (req, res, next) => {
   res.render('login')
 })
 router.get('/calculator', (req, res, next) => {
-  res.render('calculator')
+  if(req.isAuthenticated()) {
+    res.render('calculator', {logged: true})
+  } else {
+    res.render('calculator', {logged: false})
+  }
 })
 router.get('/report/edit', (req, res, next) => {
   res.render('editReport')

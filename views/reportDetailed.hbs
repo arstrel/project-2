@@ -20,7 +20,7 @@
         </a>
       
       <div class="row ">
-      <h3 class="center"> Detailed report for: <p id="date">{{report.created_at}}</p></h3>
+      <h5 class="center"> Detailed report for: <p id="date">{{report.created_at}}</p></h5>
         <div class="col">
 
         <p>Total Sales: <span class="value">{{report.sales}}</span></p>
@@ -50,7 +50,6 @@
 <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
 <script>
 let myAwkwardDate = document.getElementById('date');
-//let newCoolDate = moment(myAwkwardDate.innerText).format('YYYY-MM-DD hh:mma');
 let newCoolDate = moment(myAwkwardDate.innerText).format('LLLL');
 myAwkwardDate.innerHTML = newCoolDate;
 </script>

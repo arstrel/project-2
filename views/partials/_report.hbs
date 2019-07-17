@@ -3,7 +3,7 @@
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
         <span class="card-title">Daily Report</span>
-        <p>Created  {{this.created_at}}</p>
+        <p id="date">Created on {{this.fancyTime}}</p>
           <p> You made ${{this.takeHome}} this day.</p>
       </div>
       <div class="card-action">
@@ -32,4 +32,9 @@
       </div>
     </div>
   </div>
-
+{{!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+<script>
+let myAwkwardDate = document.getElementById('date');
+let newCoolDate = moment(myAwkwardDate.innerText).format('LLLL');
+myAwkwardDate.innerHTML = newCoolDate;
+</script> --}}
