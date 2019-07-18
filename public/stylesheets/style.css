@@ -52,7 +52,9 @@ nav:hover .colon {
 
 @media (max-width: 600px) {
   .margin-sm {
-    margin: 10px; } }
+    margin: 10px; }
+  .chip {
+    margin-top: 15px; } }
 
 .w-400 {
   max-width: 360px;
@@ -74,7 +76,7 @@ input {
   max-width: 300px; }
 
 .select-wrapper {
-  width: 300px; }
+  width: 300px !important; }
 
 .d-flex {
   display: flex;

@@ -59,11 +59,12 @@
           </a>
         </div>
         <div class="col margin-sm ">
-          <form action="/profile/delete/{{currentUser._id}}" method="POST">
-            <button class="btn waves-effect waves-light red darken-1">Delete Profile
-              <i class="material-icons right">delete_forever</i>
-            </button>
-          </form>
+
+                    <!-- Modal Trigger -->
+          <a class="btn waves-effect waves-light red darken-1 modal-trigger" href="#modal-profile-delete">Delete Profile
+            <i class="material-icons right">delete_forever</i>
+          </a>
+
         </div>
       </div>
       <div class="row margin-sm">
@@ -85,4 +86,20 @@
   {{/each}}
   </div>
 
+</div>
+
+<!-- Modal Structure -->
+<div id="modal-profile-delete" class="modal">
+  <div class="modal-content">
+    <h4>Are you sure you want to delete your profile?</h4>
+    <p>This action cannot be undone. Once deleted this profile together with the reports refferences will be foverer lost.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Go back</a>
+    <form action="/profile/delete/{{currentUser._id}}" method="POST" id="modalForm">
+      <button class="btn waves-effect waves-light red darken-1">Delete Profile
+        <i class="material-icons right">delete_forever</i>
+      </button>
+    </form>
+  </div>
 </div>

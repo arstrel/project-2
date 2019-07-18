@@ -19,6 +19,7 @@ router.get('/profile', (req, res, next) => {
   if(req.isAuthenticated()) {
     User.findById(req.user._id).populate('reports')
     .then((user)=> {
+      user.reports.reverse();
       for(let i=0; i<user.reports.length; i++) {
 
         user.reports[i].fancyTime = moment(user.reports[i].created_at).format('LLLL');
