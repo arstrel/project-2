@@ -13,7 +13,7 @@
 <div class="row">
 
   <div class="col s12 m11 l8 offset-m1 offset-l2  my-1">
-    <div class="card-panel z-depth-5">
+    <div class="card-panel z-depth-5 ">
 
         <a class="btn waves-effect light-blue lighten-1" href="/profile">Back
           <i class="material-icons left">arrow_back</i>
@@ -26,11 +26,14 @@
      
         <div class="col">
        
-              <table class="stripped center">
+              <table class="striped center">
         <thead>
           <tr>
               <th>Field</th>
               <th>Value</th>
+              {{#if report.edited.sales}}
+              <th>Edited</th>
+              {{/if}}
           </tr>
         </thead>
 
@@ -38,57 +41,86 @@
           <tr>
             <td>Total Sales:</td>
             <td>{{report.sales}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.sales}}</td>
+              {{/if}}
           </tr>
           
           <tr>
             <td>Total Auto Gratuity:</td>
             <td>{{report.totalAutoGrat}}</td>
+            {{#if report.edited}}
+              <td>{{report.edited.totalAutoGrat}}</td>
+              {{/if}}
           </tr>
 
           <tr>
             <td>Total Tips:</td>
             <td>{{report.tips}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.tips}}</td>
+              {{/if}}
           </tr>
 
           <tr>
             <td>Tip out to Bartender:</td>
             <td>{{report.tipoutBartender}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.tipoutBartender}}</td>
+              {{/if}}
           </tr>
 
           <tr>
             <td>Tip out for Food Runner:</td>
             <td>{{report.tipoutFoodRunner}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.tipoutFoodRunner}}</td>
+              {{/if}}
           </tr>
 
           <tr>
             <td>Reported Tips:</td>
             <td>{{report.reportedTips}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.reportedTips}}</td>
+              {{/if}}
           </tr>
 
           <tr>
             <td>Take Home:</td>
             <td>{{report.takeHome}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.takeHome}}</td>
+              {{/if}}
           </tr>
 
           <tr>
             <td><b>(Manager)</b>Total tip to bar:</td>
             <td>{{report.totalTipoutBartender}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.totalTipoutBartender}}</td>
+              {{/if}}
           </tr>
 
           <tr>
             <td><b>(Manager)</b>Total tip to foor runner:</td>
             <td>{{report.totalTipoutFoodRunner}}</td>
+             {{#if report.edited}}
+              <td>{{report.edited.totalTipoutFoodRunner}}</td>
+              {{/if}}
           </tr>
 
          
         </tbody>
       </table>
 
- 
-     
-            <a class="btn waves-effect amber darken-1" href="/report/edit">Edit
+ <br>
+     <div class="divider"></div>
+     <br>
+            <a class="btn waves-effect amber darken-1" href="/report/edit/{{report._id}}">Edit
               <i class="material-icons right">edit</i>
             </a>
+
           </div>
           </div>
        

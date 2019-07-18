@@ -48,16 +48,65 @@ router.get('/calculator', (req, res, next) => {
     res.render('calculator', {logged: false})
   }
 })
-router.get('/report/edit', (req, res, next) => {
-  res.render('editReport')
+router.get('/report/edit/:id', (req, res, next) => {
+  Report.findById(req.params.id)
+  .then(report => {
+    res.render('editReport', {report: report, yay: "Worry not. Edits will be saved separate from the original report"})
+  })
+  .catch(err => {
+    req.flash('error', 'Something went wrong fetching report to edit');
+    res.redirect('/report/detailed/' + req.params.id)
+  })
+
 })
+
+router.post('/report/save-edited/:id', (req, res, next) => {
+  
+  let reportId = req.params.id 
+  let sales = req.body.editedSales
+  let totalAutoGrat = req.body.editedRegAutoGrat
+  let tips = req.body.editedTips
+  let tipoutBartender = req.body.editedTipoutBartender
+  let tipoutFoodRunner = req.body.editedTipoutFoodRunner
+  let reportedTips = req.body.editedReportedTips
+  let totalTipoutBartender =req.body.editedTotalTipoutBartender 
+  let totalTipoutFoodRunner = req.body.editedTotalTipoutFoodRunner
+  let takeHome = req.body.editedTakeHome
+
+  Report.findByIdAndUpdate(reportId, {
+    $set: {
+      'edited.sales': sales,
+      'edited.totalAutoGrat': totalAutoGrat,
+      'edited.tips': tips,
+     'edited.tipoutBartender': tipoutBartender,
+      'edited.tipoutFoodRunner': tipoutFoodRunner,
+      'edited.reportedTips': reportedTips,
+      'edited.totalTipoutBartender': totalTipoutBartender,
+      'edited.totalTipoutFoodRunner': totalTipoutFoodRunner,
+      'edited.takeHome': takeHome
+  }
+  })
+  .then(()=> {
+    req.flash('success', 'Report edited successfully')
+    res.redirect('/report/detailed/' + reportId)
+  })
+  .catch(err => {
+    next(err)
+  })
+
+
+
+})
+
+
+
 router.get('/profile/edit', (req, res, next) => {
   if(req.isAuthenticated()) {
     res.render('editProfile')
   } else {
     req.flash('error', "Log in first to edit your profile");
     res.redirect('/');
-  }
+  } 
 })
 router.get('/report/detailed/:id', (req, res, next) => {
   if(req.isAuthenticated()) {

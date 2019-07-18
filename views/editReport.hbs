@@ -1,63 +1,84 @@
+{{#if yay}}
+
+<body onload="M.toast({html: '{{yay}}'})">
+
+</body>
+{{/if}}
 <div class="row">
 
   <div class="col s12 m11 l8 offset-m1 offset-l2  my-1">
     <div class="card-panel z-depth-5">
 
-        <a class="btn waves-effect light-blue lighten-1" href="/profile">Back to Profile
+        <a class="btn waves-effect light-blue lighten-1" href="/report/detailed/{{report._id}}">Back 
           <i class="material-icons left">arrow_back</i>
         </a>
       
       <h4 class="center"> Edit report for: <span class="date">DATE</span></h4>
       <div class="row ">
       {{!-- form --}}
-        <form class="col m10 l9 offset-l1" action="/report/edit" method="POST">
+        <form class="col m10 l9 offset-l1 input-field" action="/report/save-edited/{{report._id}}" method="POST">
             
             <div class="input-field col s12 m12">
               <i class="fas fa-money-bill-wave prefix"></i>
-              <input id="sales" type="number" class="validate" name="sales">
+              <input id="sales" type="text"  name="editedSales" 
+              placeholder="{{report.sales}}" value="{{report.sales}}">
               <label for="sales">Total Sales: </label>
             </div>
 
             <div class="input-field col s12 m12">
               <i class="fas fa-file-invoice-dollar prefix"></i>
-              <input id="regAutoGrat" type="number" class="validate" name="regAutoGrat">
+              <input id="regAutoGrat" type="text"  name="editedRegAutoGrat"
+              placeholder="{{report.totalAutoGrat}}" value="{{report.totalAutoGrat}}">
               <label for="regAutoGrat">Total Auto Gratuity: </label>
             </div>
 
             <div class="input-field col s12 m12">
               <i class="fas fa-money-check-alt prefix"></i>
-              <input id="tips" type="number" class="validate" name="tips">
+              <input id="tips" type="text"  name="editedTips"
+              placeholder="{{report.tips}}" value="{{report.tips}}">
               <label for="tips">Total Tips: </label>
             </div>
 
             <div class="input-field col s12 m12">
               <i class="fas fa-comment-dollar prefix"></i>
-              <input id="tipoutBartender" type="number" class="validate" name="tipoutBartender">
+              <input id="tipoutBartender" type="text" name="editedTipoutBartender"
+              placeholder="{{report.tipoutBartender}}" value="{{report.tipoutBartender}}">
               <label for="tipoutBartender">Tip out to Bartender: </label>
             </div>
                         
             <div class="input-field col s12 m12">
               <i class="fas fa-user-tag prefix"></i>
-              <input id="totalTipoutBartender" type="number" class="validate" name="totalTipoutBartender">
+              <input id="totalTipoutBartender" type="text"  name="editedTotalTipoutBartender"
+              placeholder="{{report.totalTipoutBartender}}" value="{{report.totalTipoutBartender}}">
               <label for="totalTipoutBartender">Total tip to Bartenders (Manager):  </label>
             </div>
             
             <div class="input-field col s12 m12">
               <i class="fas fa-comment-dollar prefix"></i>
-              <input id="tipoutFoodRunner" type="number" class="validate" name="tipoutFoodRunner">
+              <input id="tipoutFoodRunner" type="text"  name="editedTipoutFoodRunner"
+              placeholder="{{report.tipoutFoodRunner}}" value="{{report.tipoutFoodRunner}}">
               <label for="tipoutFoodRunner">Tip out for Food Runner: </label>
             </div>
                                     
             <div class="input-field col s12 m12">
               <i class="fas fa-user-tag prefix"></i>
-              <input id="totalTipoutFoodRunner" type="number" class="validate" name="totalTipoutFoodRunner">
+              <input id="totalTipoutFoodRunner" type="text"  name="editedTotalTipoutFoodRunner"
+              placeholder="{{report.totalTipoutFoodRunner}}" value="{{report.totalTipoutFoodRunner}}">
               <label for="totalTipoutFoodRunner">Total tip to Food Runner (Manager):  </label>
             </div>
             
             <div class="input-field col s12 m12">
               <i class="fas fa-piggy-bank prefix"></i>
-              <input id="reportedTips" type="number" class="validate" name="reportedTips">
+              <input id="reportedTips" type="text"  name="editedReportedTips"
+              placeholder="{{report.reportedTips}}" value="{{report.reportedTips}}">
               <label for="reportedTips">Reported Tips: </label>
+            </div>
+            
+            <div class="input-field col s12 m12">
+              <i class="fas fa-piggy-bank prefix"></i>
+              <input id="takeHome" type="text"  name="editedTakeHome"
+              placeholder="{{report.takeHome}}" value="{{report.takeHome}}">
+              <label for="reportedTips">Take Home: </label>
             </div>
 
    
