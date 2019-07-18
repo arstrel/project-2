@@ -39,7 +39,9 @@ document.addEventListener(
           M.toast({ html: "Something went wrong saving the config" });
           console.log(error);
         });
-        instance.next();
+        
+
+        $('.carousel.carousel-slider').carousel('next')
     };
 
     nextButton.onclick = function(e) {

@@ -13,8 +13,9 @@
           <i class="material-icons left">arrow_back</i>
         </a>
       
-      <h4 class="center"> Edit report for: <span class="date">DATE</span></h4>
-      <div class="row ">
+      <h5 class="center"> Edit report for: <p id="date">{{report.created_at}}</p></h5>
+      <p class="center">Here you can add any text comments as well as edited numbers. This will be saved separately and won't affect your original report.</p>
+      <div class="row d-flex">
       {{!-- form --}}
         <form class="col m10 l9 offset-l1 input-field" action="/report/save-edited/{{report._id}}" method="POST">
             
@@ -93,3 +94,9 @@
   </div>
   <!--col-->
 </div>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+<script>
+let myAwkwardDate = document.getElementById('date');
+let newCoolDate = moment(myAwkwardDate.innerText).format('LLLL');
+myAwkwardDate.innerHTML = newCoolDate;
+</script>
