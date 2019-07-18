@@ -21,9 +21,7 @@ router.get('/profile', (req, res, next) => {
     .then((user)=> {
       user.reports.reverse();
       for(let i=0; i<user.reports.length; i++) {
-
-        user.reports[i].fancyTime = moment(user.reports[i].created_at).format('LLLL');
-        console.log(moment(user.reports[i].created_at).format('LLLL'));
+        user.reports[i].fancyTime = moment(user.reports[i].created_at).format('LL');
       }
 
       res.render('profile', {user: user})
