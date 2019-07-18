@@ -60,10 +60,7 @@ document.addEventListener(
           foodTotal: +foodInput.value
         })
         .then(check => {
-          M.toast({
-            html: `Check saved`
-          });
-
+         
           axios
             .post("attach-check-to-report", {
               reportId: reportId,
@@ -92,7 +89,6 @@ document.addEventListener(
 
     teepButton.onclick = function(e) {
       e.preventDefault();
-      M.toast({html: `Enjoy your frehly cooked report`})
 
        let report = reports();
 

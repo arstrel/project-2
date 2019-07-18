@@ -83,7 +83,7 @@ router.post('/save-finished-report', (req, res, next)=> {
         $push: { reports: req.body.reportId}
       })
       .then(()=> {
-        res.json({message: `Report added to ${req.user.name}`})
+        res.json({message: `Freshly cooked report saved for ${req.user.name}`})
       })
       .catch((err)=>{
         res.json({message: `Error adding report to user ${req.user.name}`})
