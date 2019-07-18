@@ -30,7 +30,11 @@
         <thead>
           <tr>
               <th>Field</th>
+              {{#if report.edited.sales}}
+              <th>Original</th>
+              {{else}}
               <th>Value</th>
+              {{/if}}
               {{#if report.edited.sales}}
               <th>Edited</th>
               {{/if}}

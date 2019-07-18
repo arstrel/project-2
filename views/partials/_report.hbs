@@ -3,8 +3,11 @@
     <div class="card-content white-text">
       <span class="card-title">Daily Report</span>
       <p id="date">Created on {{this.fancyTime}}</p>
+      {{#if this.edited.takeHome}}
+      <p> You made ${{this.edited.takeHome}} this day. (edited)
+          {{else}}
       <p> You made ${{this.takeHome}} this day.
-
+        {{/if}}
       </p>
     </div>
     <div class="card-action">

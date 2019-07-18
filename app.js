@@ -55,7 +55,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Teep 100%';
 
 app.use(
   session({
