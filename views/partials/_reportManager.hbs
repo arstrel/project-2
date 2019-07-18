@@ -2,17 +2,14 @@
   <div class="card blue-grey darken-1 hoverable">
     <div class="card-content white-text">
       <span class="card-title">Daily Report</span>
-      <p id="date">Created on {{this.fancyTime}}</p>
-
-
-      {{#if this.edited.takeHome}}
-          <p> You made ${{this.edited.takeHome}} this day. (edited)
+      <p id="date">Created on {{this.fancyTime}}
+        {{#if this.authorName}}
+           by {{this.authorName}}
         {{else}}
-          <p> You made ${{this.takeHome}} this day.
-      {{/if}}
-
-      
-
+          by not registered user
+        {{/if}}
+      </p>
+      <p>Total sales for this day: ${{this.sales}}</p>
 
       </p>
     </div>

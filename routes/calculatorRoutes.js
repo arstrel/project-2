@@ -65,38 +65,58 @@ router.post('/attach-check-to-report', (req, res, next)=> {
 })
 
 router.post('/save-finished-report', (req, res, next)=> {
-  
-  Report.findByIdAndUpdate(req.body.reportId,{
-    sales: req.body.sales,
-    totalAutoGrat: req.body.totalAutoGrat,
-    tips: req.body.tips,
-    tipoutBartender: req.body.tipoutBartender,
-    tipoutFoodRunner: req.body.tipoutFoodRunner,
-    reportedTips: req.body.reportedTips ,
-    totalTipoutBartender: req.body.totalTipoutBartender,
-    totalTipoutFoodRunner: req.body.totalTipoutFoodRunner,
-    takeHome: req.body.takeHome
-  })
-  .then(report => {
-    if(req.isAuthenticated()) {
-      User.findByIdAndUpdate(req.user._id, {
-        $push: { reports: req.body.reportId}
+  if(req.isAuthenticated()) {
+    User.findByIdAndUpdate(req.user._id, {
+      $push: { reports: req.body.reportId}
+    })
+    .then((user)=> {
+      Report.findByIdAndUpdate(req.body.reportId,{
+        sales: req.body.sales,
+        totalAutoGrat: req.body.totalAutoGrat,
+        tips: req.body.tips,
+        tipoutBartender: req.body.tipoutBartender,
+        tipoutFoodRunner: req.body.tipoutFoodRunner,
+        reportedTips: req.body.reportedTips ,
+        totalTipoutBartender: req.body.totalTipoutBartender,
+        totalTipoutFoodRunner: req.body.totalTipoutFoodRunner,
+        takeHome: req.body.takeHome,
+        author: user._id,
+        authorName: user.name
       })
-      .then(()=> {
+      .then(() => {
         res.json({message: `Freshly cooked report saved for ${req.user.name}`})
       })
-      .catch((err)=>{
-        res.json({message: `Error adding report to user ${req.user.name}`})
-        next(err)
+      .catch(err => {
+        res.json({message: `Error finishing the report`})
       })
-    }
-  })
-  .catch(err => {
-    res.json({message: `Error finishing the report`})
-  })
-
-
-
+      
+    })
+    .catch((err)=>{
+      res.json({message: `Error adding report to user ${req.user.name}`})
+      next(err)
+    })
+  } else {
+  //not authenticated
+      Report.findByIdAndUpdate(req.body.reportId,{
+      sales: req.body.sales,
+      totalAutoGrat: req.body.totalAutoGrat,
+      tips: req.body.tips,
+      tipoutBartender: req.body.tipoutBartender,
+      tipoutFoodRunner: req.body.tipoutFoodRunner,
+      reportedTips: req.body.reportedTips ,
+      totalTipoutBartender: req.body.totalTipoutBartender,
+      totalTipoutFoodRunner: req.body.totalTipoutFoodRunner,
+      takeHome: req.body.takeHome,
+      author: null,
+      authorName: null
+    })
+    .then(() => {
+      res.json({message: `Enjoy your freshly cooked report`})
+    })
+    .catch(err => {
+      res.json({message: `Error finishing the report`})
+    })
+  }
 })
 
 

@@ -13,6 +13,8 @@ const reportSchema = new Schema(
     totalTipoutBartender: Number,
     totalTipoutFoodRunner: Number,
     takeHome: Number,
+    author:{ type: Schema.Types.ObjectId, ref: "Check" },
+    authorName: String,
     edited: {
       sales: String,
       totalAutoGrat: String,
@@ -25,7 +27,7 @@ const reportSchema = new Schema(
       takeHome: String
     },
     config: { type: Schema.Types.ObjectId, ref: "Setup" },
-    checks: [{ type: Schema.Types.ObjectId, ref: "User" }]
+    checks: [{ type: Schema.Types.ObjectId, ref: "Check" }]
   },
   {
     timestamps: {

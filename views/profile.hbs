@@ -77,13 +77,26 @@
   </div>
   <div class="divider"></div>
   <div class="row">
+    {{#if manager}}
+        {{#each reports}}
+  
+            {{#>_reportManager this}}
+            Something went wrong. Report partial not found
+            {{/_reportManager}}
 
-  {{#each user.reports}}
-  {{#>_report this}}
-  Something went wrong. Report partial not found
-  {{/_report}}
+        {{/each}}
+    {{else}}
 
-  {{/each}}
+      {{#each user.reports}}
+          {{#>_report this}}
+          Something went wrong. Report partial not found
+          {{/_report}}
+
+      {{/each}}
+
+
+    {{/if}}
+    
   </div>
 
 </div>
